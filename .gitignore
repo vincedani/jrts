@@ -1,0 +1,10 @@
+jerryscript/
+experiments/
+
+*.log
+*.json
+*.yaml
+
+cov.info
+__pycache__
+.DS_Store

@@ -30,19 +30,4 @@ else
   IN_FILE=$(realpath --relative-to=$PWD $1)
 fi
 
-OUT_LOG=output.txt
-EXIT_CODE=1
-
-timeout --preserve-status 10 $ROOT_DIR/jerryscript/build/bin/jerry $IN_FILE > $OUT_LOG 2>&1
-
-if [ $? -eq 134 ]
-then
-  grep -q "Assertion 'object_p != NULL' failed" $OUT_LOG
-  if [ $? -eq 0 ]
-  then
-    EXIT_CODE=0
-  fi
-fi
-
-rm $OUT_LOG
-exit $EXIT_CODE
+timeout --preserve-status 10 $ROOT_DIR/jerryscript/build/bin/jerry $IN_FILE 2>&1 | grep -m 1 -q "Assertion 'object_p != NULL' failed"

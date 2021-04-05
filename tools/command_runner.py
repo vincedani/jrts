@@ -5,16 +5,16 @@
 # This file may not be copied, modified, or distributed except
 # according to those terms.
 
-import subprocess
 from os import environ
+from subprocess import call, DEVNULL, STDOUT
 
 def run_command(command, cwd, out=None, debug=False, env=environ):
     if debug:
         print('Running: ', ' '.join(command))
 
-    return subprocess.call(
+    return call(
         command,
         cwd=cwd,
-        stdout=out,
-        stderr=subprocess.STDOUT,
+        stdout=out if out else DEVNULL,
+        stderr=STDOUT,
         env=env)

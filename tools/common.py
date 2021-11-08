@@ -7,10 +7,8 @@
 
 import jsbeautifier
 import json
-import subprocess
 
-from os import environ
-from os.path import abspath, basename, dirname, exists, join, splitext
+from os.path import abspath, basename, dirname, join, splitext
 
 TOOLS_ROOT = dirname(abspath(__file__))
 
@@ -76,7 +74,7 @@ def beautify_file(file_path):
     return formatted_file
 
 
-def dump_json(report, message=None, print_out=False, save=False, file_name=None):
+def dump_json(report, message=None, print_out=False, save=None):
     if message:
         print(message)
 
@@ -84,7 +82,7 @@ def dump_json(report, message=None, print_out=False, save=False, file_name=None)
         print(json.dumps(report, indent=4))
 
     if save:
-        assert file_name, "Missing file name to save the JSON."
-        with open(file_name, 'w') as json_file:
+        assert save, "Missing file name to save the JSON."
+        with open(save, 'w') as json_file:
             json.dump(report, json_file, indent=4, sort_keys=True)
-        print('Benchmark results are saved to:', file_name)
+        print('Benchmark results are saved to:', save)

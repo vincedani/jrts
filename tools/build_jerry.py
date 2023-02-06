@@ -38,7 +38,7 @@ def clone_jerry(repo):
         repo
     ]
 
-    if run_command(command, cwd=ROOT_DIR, debug=True):
+    if run_command(command, cwd=ROOT_DIR):
         raise Exception(f'{command} failed!')
 
 
@@ -51,7 +51,7 @@ def checkout_to_hash(repo, hash_file):
 
     command = ['git', 'checkout', git_hash]
 
-    if run_command(command, cwd=repo, debug=True):
+    if run_command(command, cwd=repo):
         raise Exception(f'{command} failed!')
 
 
@@ -62,14 +62,14 @@ def apply_patch(repo, patch_file):
     patch_file = abspath(patch_file)
     command = ['git', 'apply', patch_file]
 
-    if run_command(command, cwd=repo, debug=True):
+    if run_command(command, cwd=repo):
         raise Exception(f'{command} failed!')
 
 
 def clean_state(repo):
     command = ['git', 'reset', '--hard']
 
-    if run_command(command, cwd=repo, debug=True):
+    if run_command(command, cwd=repo):
         raise Exception(f'{command} failed!')
 
 
@@ -100,7 +100,7 @@ def build_jerry(repo, coverage):
 
         build_command += coverage_specs
 
-    if run_command(build_command, cwd=repo, debug=True):
+    if run_command(build_command, cwd=repo):
         raise Exception(f'{build_command} failed!')
 
 

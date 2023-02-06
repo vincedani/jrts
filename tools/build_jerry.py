@@ -8,7 +8,6 @@
 # according to those terms.
 
 import argparse
-import subprocess
 
 from os.path import abspath, dirname, join, isdir, isfile
 from command_runner import run_command

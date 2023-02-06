@@ -1,5 +1,14 @@
+# JerryScript Repository
 jerryscript/
+
+# A custom directory where the experiments can be copyied
 experiments/
+
+# Pre-built JerryScript binaries
+tests/*/*-jerry
+
+# Generated oracle scripts
+tests/*/test.sh
 
 *.log
 *.json

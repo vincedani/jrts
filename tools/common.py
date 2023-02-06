@@ -13,19 +13,19 @@ from os.path import abspath, basename, dirname, join, splitext
 TOOLS_ROOT = dirname(abspath(__file__))
 
 TEST_FILES = {
-    '3299': ['test.sh', '3299-orig.js'],
-    '3361': ['test.sh', '3361-orig.js'],
-    '3376': ['test.sh', '3376-orig.js'],
-    '3408': ['test.sh', '3408-orig.js'],
-    '3431': ['test.sh', '3431-orig.js'],
-    '3433': ['test.sh', '3433-orig.js'],
-    '3437': ['test.sh', '3437-orig.js'],
-    '3479': ['test.sh', '3479-orig.js'],
-    '3483': ['test.sh', '3483-orig.js'],
-    '3506': ['test.sh', '3506-orig.js'],
-    '3523': ['test.sh', '3523-orig.js'],
-    '3534': ['test.sh', '3534-orig.js'],
-    '3536': ['test.sh', '3536-orig.js'],
+    '3299': ['3299-orig.js', "AddressSanitizer: dynamic-stack-buffer-overflow"],
+    '3361': ['3361-orig.js', "JERRY_CONTEXT (jmem_heap_allocated_size) == 0"],
+    '3376': ['3376-orig.js', "object_p->type_flags_refs >= ECMA_OBJECT_REF_ONE"],
+    '3408': ['3408-orig.js', "AddressSanitizer: heap-buffer-overflow on address"],
+    '3431': ['3431-orig.js', "ECMA_STRING_IS_REF_EQUALS_TO_ONE (string_p)"],
+    '3433': ['3433-orig.js', "context_p->stack_top_uint8 == SCAN_STACK_CATCH_STATEMENT"],
+    '3437': ['3437-orig.js', "JERRY_CONTEXT (jmem_heap_allocated_size) == 0"],
+    '3479': ['3479-orig.js', "Assertion 'old_length < new_length' failed at"],
+    '3483': ['3483-orig.js', "Assertion 'object_p->type_flags_refs >= ECMA_OBJECT_REF_ONE' failed"],
+    '3506': ['3506-orig.js', "Assertion 'object_p != NULL' failed"],
+    '3523': ['3523-orig.js', "Assertion 'ECMA_STRING_IS_REF_EQUALS_TO_ONE (string_p)' failed"],
+    '3534': ['3534-orig.js', "Assertion 'JERRY_CONTEXT (jmem_heap_allocated_size) == 0' failed"],
+    '3536': ['3536-orig.js', "ECMA_PROPERTY_GET_TYPE (property) == ECMA_PROPERTY_TYPE_NAMEDDATA || ECMA_PROPERTY_GET_TYPE (property) == ECMA_PROPERTY_TYPE_NAMEDACCESSOR || ECMA_PROPERTY_GET_TYPE (property) == ECMA_PROPERTY_TYPE_VIRTUAL"],
 }
 
 

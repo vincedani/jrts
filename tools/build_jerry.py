@@ -10,6 +10,8 @@
 import argparse
 
 from os.path import abspath, dirname, join, isdir, isfile
+from shutil import copy2
+
 from command_runner import run_command
 
 ROOT_DIR = join(dirname(abspath(__file__)), '..')
@@ -25,6 +27,8 @@ def parse_arguments():
                         help='Build JerryScript with coverage.')
     parser.add_argument('--patch', default=None,
                         help='Patch file to apply before building.')
+    parser.add_argument('--target', default=None,
+                        help='Path where the compiled binary should be copied.')
 
     return parser.parse_args()
 
@@ -103,7 +107,7 @@ def build_jerry(repo, coverage):
         raise Exception(f'{build_command} failed!')
 
 
-def checkout_and_build(test_name, coverage=False, patch_file=None):
+def checkout_and_build(test_name, coverage=False, patch_file=None, target=None):
     jerry_dir = join(ROOT_DIR, 'jerryscript')
 
     if not isdir(jerry_dir):
@@ -120,7 +124,11 @@ def checkout_and_build(test_name, coverage=False, patch_file=None):
 
     build_jerry(jerry_dir, coverage)
 
+    if target:
+        binary = join(jerry_dir, 'build', 'bin', 'jerry')
+        copy2(binary, target, follow_symlinks=True)
+
 
 if __name__ == '__main__':
     args = parse_arguments()
-    checkout_and_build(args.test, args.coverage, args.patch)
+    checkout_and_build(args.test, args.coverage, args.patch, args.target)

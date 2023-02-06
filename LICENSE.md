@@ -1,4 +1,4 @@
-Copyright (c) 2021 Daniel Vince, Renata Hodovan, Akos Kiss.
+Copyright (c) 2021-2023 Daniel Vince, Renata Hodovan, Akos Kiss.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

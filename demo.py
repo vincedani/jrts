@@ -29,7 +29,7 @@ def process_log(log_path):
     for line in src.splitlines():
         if line.startswith('Result is saved to '):
             result_file_path = line.replace('Result is saved to ', '').strip('.')
-            output_lines, output_chars = process_source(result_file_path)
+            output_lines, output_chars, output_size = process_source(result_file_path)
             return test_fail, test_pass, cache_count, output_lines, output_chars
     assert False, 'Result save line not found.'
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     with open(log_file, 'w') as stderr_file:
         run_command(command, test_dir, out=stderr_file, env=dict(environ, PYTHONOPTIMIZE='1'))
 
-    input_lines, input_chars = process_source(input_source)
+    input_lines, input_chars, input_size = process_source(input_source)
     fails, passes, cache_no, out_lines, out_chars = process_log(log_file)
 
     report[test_name] = dict()

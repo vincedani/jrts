@@ -47,7 +47,7 @@ def process_source(file_path, format=False):
 
     lines = src.splitlines()
     characters = sum(len(word) for line in lines for word in line.split())
-    return len(lines), characters
+    return len(lines), characters, len(src)
 
 
 def beautify_file(file_path):
